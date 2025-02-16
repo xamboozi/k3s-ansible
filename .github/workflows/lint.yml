@@ -11,18 +11,18 @@ jobs:
 
     steps:
       - name: Check out the codebase
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # 4.1.7
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # 4.2.2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f # 5.1.1
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # 5.3.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip' # caching pip dependencies
 
       - name: Restore Ansible cache
-        uses: actions/cache/restore@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # 4.0.2
+        uses: actions/cache/restore@6849a6489940f00c2f30c0fb92c6274307ccb58a # 4.1.2
         with:
           path: ~/.ansible/collections
           key: ansible-${{ hashFiles('collections/requirements.yml') }}
@@ -45,9 +45,9 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout code
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # 4.1.7
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # 4.2.2
       - name: Ensure SHA pinned actions
-        uses: zgosalvez/github-actions-ensure-sha-pinned-actions@b88cd0aad2c36a63e42c71f81cb1958fed95ac87 # 3.0.10
+        uses: zgosalvez/github-actions-ensure-sha-pinned-actions@38608ef4fb69adae7f1eac6eeb88e67b7d083bfd # 3.0.16
         with:
           allowlist: |
             aws-actions/
